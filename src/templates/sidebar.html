@@ -4,12 +4,12 @@
             <header>
               <h3 class="h6">블로그 검색하기</h3>
             </header>
-            <form action="{% url 'search' %}" class="search-form">
-              <div class="form-group">
-                <input type="text" name="q" placeholder="무엇을 찾아드릴까요?">
-                <button type="submit" class="submit"><i class="icon-search"></i></button>
-              </div>
-            </form>
+            <form action="{% url 'search' %}">
+                  <div class="form-group">
+                    <input type="search" name="q" id="search" placeholder="무엇을 찾고 있나요?">
+                    <button type="submit" class="submit"><i class="icon-search-1"></i></button>
+                  </div>
+            </form>  
           </div>
           <!-- Widget [Latest Posts Widget]        -->
           <div class="widget latest-posts">
@@ -41,16 +41,5 @@
               <div class="item d-flex justify-content-between">
                 <a href="#">{{ cat.category__title }}</a><span>{{ cat.category__title__count }}</span></div>
             {% endfor %}
-          </div>
-          <!-- Widget [Tags Cloud Widget]-->
-          <div class="widget tags">       
-            <header>
-              <h3 class="h6">태그</h3>
-            </header>
-            <ul class="list-inline">
-            {% for cat in category.all %}
-              <li class="list-inline-item"><a href="#" class="tag">{{ cat.category__title }}</a></li>
-            {% endfor %}
-            </ul>
-          </div>
+          </div>          
 </aside>
