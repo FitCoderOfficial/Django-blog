@@ -95,6 +95,44 @@ def post(request, id):
     return render(request, 'post.html', context)
 
 def post_create(request):
+    title = "포스팅하기"
+    form = PostForm(request.POST or None, request.FILES or None)
+    author = get_author(request.user)
+    if request.method == "POST":
+        if form.is_valid():
+            form.instance.author = author
+            form.save()
+            return redirect(reverse("post-detail", kwargs={
+                'id': form.instance.id 
+            }))
+    context = {
+        'title':title,
+        'form': form
+    }
+    return render(request, "post_create.html", context)
+
+def post_update(request, id):
+    title = "수정하기"
+    post = get_object_or_404(Post, id=id)
+    form = PostForm(
+        request.POST or None,
+        request.FILES or None,
+        instance=post)
+    author = get_author(request.user)
+    if request.method == "POST":
+        if form.is_valid():
+            form.instance.author = author
+            form.save()
+            return redirect(reverse("post-detail", kwargs={
+                'id': form.instance.id 
+            }))
+    context = {
+        'title':title,
+        'form': form
+    }
+    return render(request, "post_create.html", context)
+
+def post_delete(request, id):
     form = PostForm(request.POST or None, request.FILES or None)
     author = get_author(request.user)
     if request.method == "POST":
@@ -108,9 +146,3 @@ def post_create(request):
         'form': form
     }
     return render(request, "post_create.html", context)
-
-def post_update(request, id):
-    pass
-
-def post_delete(request, id):
-    pass
