@@ -23,9 +23,9 @@
                   {% endfor %}
                   </div>
                 </div>
-                <div>
-                  <a href="" class="btn btn-primary">수정하기</a>
-                  <a href="" class="btn btn-danger">삭제하기</a>
+                <div class="mt-3 mb-3">
+                  <a href="" type="button" class="btn btn-primary">수정하기</a>
+                  <a href="" type="button" class="btn btn-danger">삭제하기</a>
                 </div>
                 <h1>{{ post.title }}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
@@ -38,7 +38,7 @@
                   </div>
                 </div>
                 <div class="post-body">
-                    {{ post.overview }}</br>
+                    <!--{{ post.overview }}</br>-->
                     {{ post.content | safe }}
                 </div>
                 <div class="post-tags">

@@ -26,12 +26,16 @@
           <!-- Navbar Menu -->
           <div id="navbarcollapse" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a href="/" class="nav-link ">Home</a>
+              <li class="nav-item"><a href="/" class="nav-link ">홈</a>
               </li>
-              <li class="nav-item"><a href="/blog" class="nav-link active ">Blog</a>
+              <li class="nav-item"><a href="/blog" class="nav-link active ">게시물</a>
               </li>
-              <li class="nav-item"><a href="#" class="nav-link ">Contact</a>
+              <li class="nav-item"><a href="/blog" class="nav-link active ">연락하기</a>
               </li>
+              {% if request.user.is_staff %}
+              <li class="nav-item"><a href="{% url 'post-create'%}" class="nav-link ">포스팅하기</a>
+              </li>
+              {% endif %}
             </ul>
             <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
             {% comment %} <ul class="langs navbar-text"><a href="#" class="active">EN</a><span>           </span><a href="#">ES</a></ul>
