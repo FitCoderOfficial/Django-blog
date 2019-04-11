@@ -98,7 +98,7 @@ def post(request, id):
     return render(request, 'post.html', context)
 
 def post_create(request):
-    title = "포스팅하기"
+    title = '포스팅하기'
     form = PostForm(request.POST or None, request.FILES or None)
     author = get_author(request.user)
     if request.method == "POST":
@@ -106,10 +106,10 @@ def post_create(request):
             form.instance.author = author
             form.save()
             return redirect(reverse("post-detail", kwargs={
-                'id': form.instance.id 
+                'id': form.instance.id
             }))
     context = {
-        'title':title,
+        'title': title,
         'form': form
     }
     return render(request, "post_create.html", context)
