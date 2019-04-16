@@ -30,8 +30,8 @@
               </li>
               <li class="nav-item"><a href="/blog" class="nav-link active ">게시물</a>
               </li>
-              <li class="nav-item"><a href="/blog" class="nav-link active ">연락하기</a>
-              </li>
+              <!--<li class="nav-item"><a href="/blog" class="nav-link active ">연락하기</a>
+              </li>-->
               {% if request.user.is_staff %}
               <li class="nav-item"><a href="{% url 'post-create'%}" class="nav-link ">포스팅하기</a>
               </li>

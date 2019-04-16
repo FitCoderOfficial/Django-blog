@@ -18,7 +18,7 @@
               <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
                   <div class="category">
-                  {% for cat in post.category.all %}
+                  {% for cat in post.categorys.all %}
                     <a href="#">{{ cat }}</a>
                   {% endfor %}
                   </div>
@@ -42,7 +42,7 @@
                     {{ post.content | safe }}
                 </div>
                 <div class="post-tags">
-                {% for cat in post.category.all %}
+                {% for cat in post.categorys.all %}
                 <a href="#" class="tag">{{ cat }}</a>
                 {% endfor %}
                 </div>
@@ -111,7 +111,7 @@
             </div>
           </div>
         </main>
-         {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}
+         {% include 'sidebar.html' with most_recent=most_recent categorys_count=categorys_count %}
       </div>
     </div>
 {% endblock content %}

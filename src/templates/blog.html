@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block  content %}
+{% block content %}
+
     <div class="container">
       <div class="row">
         <!-- Latest Posts -->
@@ -16,7 +17,7 @@
                   <div class="post-meta d-flex justify-content-between">
                     {% comment %} <div class="date meta-last">20 May | 2016</div> {% endcomment %}
                     <div class="category">
-                    {% for cat in post.category.all %}
+                    {% for cat in post.categories.all %}
                     <a href="#">{{ cat }}</a>
                     {% endfor %}
                     </div>
@@ -28,28 +29,45 @@
                       <div class="avatar"><img src="{{ post.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
                       <div class="title"><span>{{ post.author.user.username }}</span></div>
                     </a>
-                    <div class="date"><i class="icon-clock"></i> {{ post.timestamp|timesince }} 전</div>
+                    <div class="date"><i class="icon-clock"></i>{{ post.timestamp|timesince }} 전</div>
                     <div class="comments meta-last"><i class="icon-comment"></i>{{ post.comment_count}}</div>
                   </footer>
                 </div>              
               </div>
               {% endfor %}
             </div>
-            <!-- Pagination -->
+            <!-- Pagination
             <nav aria-label="Page navigation example">
               <ul class="pagination pagination-template d-flex justify-content-center">
-                {% if queryset.has_previous %}
-                <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.pervious_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                {% if queryset.has_previous %}                
+                <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
                 {% endif %}
                 <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.number }}" class="page-link active">{{ queryset.number }}</a></li>
                 {% if queryset.has_next %}
                 <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.next_page_number }}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
                 {% endif %}
               </ul>
+            </nav>-->
+
+            {% if is_paginated %}
+            
+            <nav aria-label="Page navigation example">
+              <ul class="pagination pagination-template d-flex justify-content-center">
+                {% if page_obj.has_previous %}                
+                <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                {% endif %}
+                <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.number }}" class="page-link active">{{ page_obj.number }}</a></li>
+                {% if page_obj.has_next %}
+                <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.next_page_number }}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                {% endif %}
+              </ul>
             </nav>
+            
+            {% endif %}
           </div>
         </main>
-         {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}
+        {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}
       </div>
     </div>
+
 {% endblock content %}

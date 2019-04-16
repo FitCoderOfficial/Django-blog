@@ -17,15 +17,17 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'overview', 'content', 'thumbnail', 'category', 'featured', 'previous_post', 'next_post')
+        fields = ('title', 'overview', 'content', 'thumbnail', 
+        'categories', 'featured', 'previous_post', 'next_post')
+
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(widget=forms.Textarea(attrs={
-        "class":'form-control',
-        "placeholder": '이곳에 댓글을 써보세요',
-        "id": 'usercomment',
-        "rows": '4',
+        'class': 'form-control',
+        'placeholder': '이곳에 댓글을 써보세요',
+        'id': 'usercomment',
+        'rows': '4'
     }))
     class Meta:
         model = Comment
-        fields = {'content', }
+        fields = ('content', )
