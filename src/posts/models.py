@@ -41,6 +41,7 @@ class Comment(models.Model):
 
 
 class Post(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     overview = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -74,6 +75,9 @@ class Post(models.Model):
             'pk': self.pk
         })
 
+    def city_id(self):
+        return self.id
+        
     @property
     def get_comments(self):
         return self.comments.all().order_by('-timestamp')
@@ -85,3 +89,5 @@ class Post(models.Model):
     @property
     def view_count(self):
         return PostView.objects.filter(post=self).count()
+
+    
