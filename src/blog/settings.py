@@ -4,16 +4,15 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'm^yn5c@edjb)huv03(r5rphb62mw&x1ja9gz%%l6-a810wn1!0'
+#SECRET_KEY = 'm^yn5c@edjb)huv03(r5rphb62mw&x1ja9gz%%l6-a810wn1!0'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'm^yn5c@edjb)huv03(r5rphb62mw&x1ja9gz%%l6-a810wn1!0')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+#4DEBUG = True
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -176,3 +176,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
+
+#Heroku: Update database configuration from $DATABASE_URL.
+#import dj_database_url
+#db_from_env = dj_database_url.config(conn_max_age=500)
+#DATABASES['default'].update(db_from_env)
