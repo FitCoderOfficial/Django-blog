@@ -2,29 +2,21 @@
 {% load static %}
 
 {% block  content %}
-    <section style="background: url({% static 'img/hero2.jpg' %});background-repeat: no-repeat; background-size: cover; background-position: center center" class="hero">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8">
-            <h1>제 개인블로그에 오신 것을 환영합니다</br>재미없는 주제는 취급하지 않습니다</h1><a href="#" class="hero-link">구경하기</a>
-          </div>
-        </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i>더 보기</a>
-      </div>
-    </section>
-    <!-- Intro Section-->
-    <section class="intro">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8">
-            <h2 class="h3">이 곳에서는</h2>
-            <p class="text-big">제가 개인적으로 관심있어하는 분야에 대한 글을 올립니다.</br>
-            주로 <strong>디자인</strong>과 <strong>프로그래밍</strong>에 대해 다룰 것입니다.</br>
-            관심사가 겹친다면 댓글로 피드백을 남겨주세요.                         
-            </p>
+   <!-- Page Header -->
+  <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Clean Blog</h1>
+            <span class="subheading">A Blog Theme by Start Bootstrap</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </header>
+
     <section class="featured-posts no-padding-top">
       <div class="container">
         <!-- Post-->
